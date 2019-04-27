@@ -1,0 +1,13 @@
+#header, caption{
+  background-color: #29a7a6 !important;
+}
+
+#head{
+  color: #fff !important;
+}
+
+.breadcrumbs, #changelist-filter h2, [type="submit"]{
+  background-color: #09bebe !important;
+  color: #fff !important;
+  opacity: 0.9 !important;
+}

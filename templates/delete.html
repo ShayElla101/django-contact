@@ -1,0 +1,40 @@
+{%extends 'base.html'%}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{%block title %}
+{%if contact.manager == request.user %}
+
+Delete {{contact}}
+{%else%}
+You have no access to this page
+
+{%endif%}
+{%endblock title%}
+
+
+{% block content %}
+
+{%if contact.manager == request.user %}
+
+<div class="container">
+  <h2 class="heading font-weight-light text-center">Delete {{contact}}'s Contact</h2>
+  <hr>
+</div>
+<div class="container w-25 card p-4 mt-4">
+  <h4 class="heading font-weight-light text-center">Are you sure you want to delete this contact? </h2>
+<br>
+  <form class="" action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form|crispy}}
+    <a href="{% url 'detail' contact.id %}" class="btn btn-info btn-lg mr-3 ml-4 w-80 text-white text-center my-2">Cancel</a> &nbsp; &nbsp; &nbsp;  &nbsp;
+    <input type="submit" class="btn btn-danger btn-lg w-80 text-white text-center my-2" name="" value="Delete">
+  </form>
+</div>
+
+{%else%}
+You have no access to this page
+
+{%endif%}
+
+{%endblock content%}

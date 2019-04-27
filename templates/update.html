@@ -1,0 +1,40 @@
+{%extends 'base.html'%}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{%block title %}
+{%if contact.manager == request.user %}
+Update {{contact}}
+
+{%else%}
+You have no access to this page
+{%endif%}
+
+{%endblock title%}
+
+
+{% block content %}
+{%if contact.manager == request.user %}
+<div class="container">
+  <h2 class="heading font-weight-light text-center">Update {{contact}}</h2>
+  <hr>
+</div>
+<div class="container w-25 card p-4 mt-4">
+  <form class="" action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form|crispy}}
+    <input type="submit" class="btn btn-info btn-lg w-100 text-white text-center my-2" name="" value="Update">
+  </form>
+</div>
+
+{%else%}
+<div class="container">
+  <p>You have no access to this page
+</p>
+</div>
+
+{%endif%}
+
+
+
+{%endblock content%}

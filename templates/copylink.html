@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      *{
+        box-sizing:border-box;
+      }
+      body{
+        margin: 0 auto;
+        padding: 20px;
+        text-align: center;
+        display: block;
+      }
+
+      textarea{
+        padding-top:10px;
+        font-size: 18px;
+        padding-right: 0px;
+        border: solid #129FC3 thin;
+      }
+
+      button{
+        margin-top: 0;
+        background-color: #129FC3;
+        border: solid #129FC3 thin;
+        font-size: 20px;
+        padding: 10px;
+        color: #fff;
+        font-weight : bold;
+        display: inline-block;
+
+      }
+      span{
+        background-color: #d1d1d1;
+        padding: 10px;
+        font-size: 17px;
+      }
+
+    </style>
+  </head>
+  <body>
+    <textarea id="txt-link" rows="1" cols="76" readonly ></textarea>
+    <p>
+      <button id="btn-copy" type="button" name="button">Copy / Share Link</button>
+      <span style="display:none">Yay!! Link copied. Press Ctrl + V to paste to desired location</span>
+
+    </p>
+
+    <script type="text/javascript">
+      var txtLink =   document.querySelector('#txt-link');
+      txtLink.value = window.location.href;
+
+      document.querySelector("#btn-copy").addEventListener('click', function(){
+        txtLink.select();
+        document.execCommand('copy');
+        console.log("Text copied");
+        document.querySelector("span").style = "display: inline-block";
+      });
+    </script>
+  </body>
+</html>
